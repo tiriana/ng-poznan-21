@@ -22,7 +22,7 @@ gulp.task('scripts', function () {
 
     return bundler.bundle()
         .pipe(source(config.app.result))
-        .pipe(gulp.dest(config.publicPath))
+        .pipe(gulp.dest(config.publicPath));
 });
 
 gulp.task('watch', function () {

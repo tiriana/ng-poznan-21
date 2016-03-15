@@ -4,7 +4,6 @@ var apiRouter = express.Router();
 var itemRouter = express.Router({
     mergeParams: true
 });
-
 var itemsRepo = require('./lib/items');
 
 apiRouter.use('/items', itemRouter);

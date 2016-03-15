@@ -1,6 +1,1 @@
-export class A {
-    public hello(name: string) {
-        console.log('Hello ' + name);
-        alert('abcd');
-    }
-}
+console.log(127);

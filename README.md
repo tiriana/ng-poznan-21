@@ -35,6 +35,3 @@ Dodałem watcha, który niestety wywala się na błędach z typescript. Załatwi
 ```
 while [ 1 ]; do gulp watch; sleep 3; done
 ```
-
-Dodaję livereload
-```npm isntall gulp-livereload --save-dev```
