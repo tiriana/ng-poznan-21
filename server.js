@@ -29,8 +29,6 @@ itemRouter.route('/:itemId')
 
 app.use('/api', apiRouter);
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-});
+app.use(express.static('public'));
 
 app.listen(3000, function () {});
