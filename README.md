@@ -24,3 +24,17 @@ API
 * ```/api``` wypisuje komunikat
 * ```/api/items``` zwraca tablicę z itemami w formacie JSON
 * ```/api/item/:itemId``` zwraca item o id ```itemId``` w formacie JSON
+
+Następnie
+=========
+```
+sudo npm install gulp -g
+npm install gulp browserify tsify vinyl-source-stream  --save-dev
+```
+Dodałem watcha, który niestety wywala się na błędach z typescript. Załatwiam sprawę komendą:
+```
+while [ 1 ]; do gulp watch; sleep 3; done
+```
+
+Dodaję livereload
+```npm isntall gulp-livereload --save-dev```
