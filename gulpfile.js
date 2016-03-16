@@ -2,7 +2,9 @@ var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var tsify = require('tsify');
-var plumber = require('gulp-plumber');
+var less = require('gulp-less');
+var path = require('path');
+var rename = require('gulp-rename');
 
 var config = {
     publicPath: __dirname + '/public',
@@ -13,7 +15,7 @@ var config = {
     }
 };
 
-gulp.task('scripts', function () {
+gulp.task('scripts', function() {
     var bundler = browserify({
             basedir: config.app.path
         })
@@ -25,6 +27,21 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest(config.publicPath));
 });
 
-gulp.task('watch', function () {
+gulp.task('less', function() {
+    return gulp.src('./app/less/main.less')
+        .pipe(less({
+            paths: [
+                './node_modules/bootstrap-less',
+                path.join(__dirname, 'less', 'includes')
+            ]
+        }))
+        .pipe(rename('style.css'))
+        .pipe(gulp.dest('./public/css'));
+});
+
+gulp.task('styles', ['less']);
+
+gulp.task('watch', function() {
     gulp.watch(['./app/**/*.ts', './app/*.ts'], ['scripts']);
+    gulp.watch(['./app/**/*.less'], ['styles']);
 });
