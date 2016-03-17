@@ -1,21 +1,18 @@
 /// <reference path="../typings/tsd.d.ts" />
 
 import angular = require('angular');
+import itemsService = require('./service/itemsService');
+import HeaderController = require('./controller/HeaderController');
+import ItemsController = require('./controller/ItemsController');
+import FooterController = require('./controller/FooterController');
 import 'angular-ui-router';
 
 var app = angular.module('ngPoznanMeetup21', ['ui.router']);
 
-import HeaderController = require('./controller/HeaderController');
+app.service(itemsService.name, itemsService.service);
 app.controller(HeaderController.name, HeaderController.controller);
-
-import ItemsController = require('./controller/ItemsController');
 app.controller(ItemsController.name, ItemsController.controller);
-
-import FooterController = require('./controller/FooterController');
 app.controller(FooterController.name, FooterController.controller);
-
-import ItemsResource = require('./resource/ItemsResource');
-app.factory(ItemsResource.name, ItemsResource.resource);
 
 import {default as config} from "./config";
 app.config(config);

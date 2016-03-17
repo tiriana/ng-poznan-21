@@ -19,6 +19,9 @@
     },
     "angularjs/angular-resource.d.ts": {
       "commit": "926711691d213f76a483b36dd728e80be1257717"
+    },
+    "q/Q.d.ts": {
+      "commit": "89f1449d19aa1010f61dd8c7a44502bed42da678"
     }
   }
 }

@@ -47,7 +47,12 @@ exports["default"] = controller;
 },{}],4:[function(require,module,exports){
 "use strict";
 exports.name = 'ItemsController';
-function controller($scope) {
+function controller($scope, itemsService) {
+    itemsService
+        .all()
+        .then(function (allItems) {
+        $scope.items = allItems;
+    });
 }
 exports.controller = controller;
 exports.__esModule = true;
@@ -57,30 +62,38 @@ exports["default"] = controller;
 /// <reference path="../typings/tsd.d.ts" />
 "use strict";
 var angular = require('angular');
+var itemsService = require('./service/itemsService');
+var HeaderController = require('./controller/HeaderController');
+var ItemsController = require('./controller/ItemsController');
+var FooterController = require('./controller/FooterController');
 require('angular-ui-router');
 var app = angular.module('ngPoznanMeetup21', ['ui.router']);
-var HeaderController = require('./controller/HeaderController');
+app.service(itemsService.name, itemsService.service);
 app.controller(HeaderController.name, HeaderController.controller);
-var ItemsController = require('./controller/ItemsController');
 app.controller(ItemsController.name, ItemsController.controller);
-var FooterController = require('./controller/FooterController');
 app.controller(FooterController.name, FooterController.controller);
-var ItemsResource = require('./resource/ItemsResource');
-app.factory(ItemsResource.name, ItemsResource.resource);
 var config_1 = require("./config");
 app.config(config_1["default"]);
 window.app = app;
 app.constant('VERSION', require('../package.json').version);
 
-},{"../package.json":10,"./config":1,"./controller/FooterController":2,"./controller/HeaderController":3,"./controller/ItemsController":4,"./resource/ItemsResource":6,"angular":9,"angular-ui-router":7}],6:[function(require,module,exports){
+},{"../package.json":10,"./config":1,"./controller/FooterController":2,"./controller/HeaderController":3,"./controller/ItemsController":4,"./service/itemsService":6,"angular":9,"angular-ui-router":7}],6:[function(require,module,exports){
+/// <reference path="../../typings/tsd.d.ts" />
 "use strict";
-exports.name = 'Items';
-function resource($resource) {
-    return $resource('/api/items/:id');
+exports.name = 'itemsService';
+function service($http, $q) {
+    this.all = function () {
+        var deferred = $q.defer();
+        $http.get('/api/items')
+            .success(function (data, status, headers, config) {
+            deferred.resolve(data);
+        });
+        return deferred.promise;
+    };
 }
-exports.resource = resource;
+exports.service = service;
 exports.__esModule = true;
-exports["default"] = resource;
+exports["default"] = service;
 
 },{}],7:[function(require,module,exports){
 /**
@@ -35199,12 +35212,12 @@ module.exports = angular;
 },{"./angular":8}],10:[function(require,module,exports){
 module.exports={
   "name": "ng-poznan-21",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Examples for my talk during ng-poznan meetup #21",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "pm2 delete server.js && pm2 start server.js"
   },
   "repository": {
     "type": "git",

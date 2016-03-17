@@ -23,6 +23,7 @@ gulp.task('less', function() {
     return gulp.src('./app/less/main.less')
         .pipe(less({
             paths: [
+                '.',
                 './node_modules/bootstrap-less',
                 path.join(__dirname, 'less', 'includes')
             ]
