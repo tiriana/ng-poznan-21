@@ -35212,7 +35212,7 @@ module.exports = angular;
 },{"./angular":8}],10:[function(require,module,exports){
 module.exports={
   "name": "ng-poznan-21",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Examples for my talk during ng-poznan meetup #21",
   "main": "index.js",
   "scripts": {

@@ -34,6 +34,8 @@ gulp.task('less', function() {
 
 gulp.task('styles', ['less']); // alias
 
+gulp.task('build', ['styles', 'scripts']);
+
 gulp.task('watch', function() {
     gulp.watch(['./app/**/*.ts', './app/*.ts'], ['scripts']);
     gulp.watch(['./app/**/*.less'], ['styles']);
