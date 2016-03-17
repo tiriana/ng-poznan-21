@@ -84,7 +84,7 @@ exports.name = 'itemsService';
 function service($http, $q) {
     this.all = function () {
         var deferred = $q.defer();
-        $http.get('/api/items')
+        $http.get('/api/items', { params: { limit: 12, offset: Math.floor(Math.random() * 100) } })
             .success(function (data, status, headers, config) {
             deferred.resolve(data);
         });
@@ -35212,7 +35212,7 @@ module.exports = angular;
 },{"./angular":8}],10:[function(require,module,exports){
 module.exports={
   "name": "ng-poznan-21",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Examples for my talk during ng-poznan meetup #21",
   "main": "index.js",
   "scripts": {

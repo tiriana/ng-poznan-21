@@ -6536,22 +6536,19 @@ button.close {
   text-align: center;
 }
 .item {
-  position: relative;
   min-width: 300px !important;
   min-height: 200px !important;
   max-width: 300px !important;
   max-height: 200px !important;
   overflow: hidden;
   float: left;
-}
-.item-content {
-  position: absolute;
-  top: 50%;
-  height: 100px;
-  margin-top: -50px;
-  text-align: center;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .item-content .face {
   font-size: 24px;
   font-weight: bold;
+  padding: 20px 0;
 }

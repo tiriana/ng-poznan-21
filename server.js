@@ -17,7 +17,7 @@ apiRouter.route('/')
 itemRouter.route('/')
     .get(function (req, res) {
         res.status(200)
-            .jsonp(itemsRepo(req.params.limit, req.params.offset));
+            .jsonp(itemsRepo(req.query.limit, req.query.offset));
     });
 
 itemRouter.route('/:itemId')
