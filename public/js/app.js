@@ -13,11 +13,11 @@ function config($stateProvider, $urlRouterProvider) {
             },
             items: {
                 templateUrl: 'view/items.html',
-                controller: 'ItemsController'
+                controller: require('./controller/ItemsController').name
             },
             footer: {
                 templateUrl: 'view/footer.html',
-                controller: 'FooterController'
+                controller: require('./controller/FooterController').name
             }
         }
     });
@@ -25,7 +25,7 @@ function config($stateProvider, $urlRouterProvider) {
 exports.__esModule = true;
 exports["default"] = config;
 
-},{"./controller/HeaderController":3}],2:[function(require,module,exports){
+},{"./controller/FooterController":2,"./controller/HeaderController":3,"./controller/ItemsController":4}],2:[function(require,module,exports){
 "use strict";
 exports.name = 'FooterController';
 function controller($scope, VERSION) {
@@ -65,12 +65,24 @@ var ItemsController = require('./controller/ItemsController');
 app.controller(ItemsController.name, ItemsController.controller);
 var FooterController = require('./controller/FooterController');
 app.controller(FooterController.name, FooterController.controller);
+var ItemsResource = require('./resource/ItemsResource');
+app.factory(ItemsResource.name, ItemsResource.resource);
 var config_1 = require("./config");
 app.config(config_1["default"]);
 window.app = app;
 app.constant('VERSION', require('../package.json').version);
 
-},{"../package.json":9,"./config":1,"./controller/FooterController":2,"./controller/HeaderController":3,"./controller/ItemsController":4,"angular":8,"angular-ui-router":6}],6:[function(require,module,exports){
+},{"../package.json":10,"./config":1,"./controller/FooterController":2,"./controller/HeaderController":3,"./controller/ItemsController":4,"./resource/ItemsResource":6,"angular":9,"angular-ui-router":7}],6:[function(require,module,exports){
+"use strict";
+exports.name = 'Items';
+function resource($resource) {
+    return $resource('/api/items/:id');
+}
+exports.resource = resource;
+exports.__esModule = true;
+exports["default"] = resource;
+
+},{}],7:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -4610,7 +4622,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -35180,14 +35192,14 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":7}],9:[function(require,module,exports){
+},{"./angular":8}],10:[function(require,module,exports){
 module.exports={
   "name": "ng-poznan-21",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Examples for my talk during ng-poznan meetup #21",
   "main": "index.js",
   "scripts": {

@@ -1,4 +1,4 @@
-import {name as headerControlledName} from './controller/HeaderController'
+import {name as headerControlledName} from './controller/HeaderController';
 
 function config($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -13,11 +13,11 @@ function config($stateProvider, $urlRouterProvider) {
             },
             items: {
                 templateUrl: 'view/items.html',
-                controller: 'ItemsController'
+                controller: require('./controller/ItemsController').name
             },
             footer: {
                 templateUrl: 'view/footer.html',
-                controller: 'FooterController'
+                controller: require('./controller/FooterController').name
             }
         }
     });
