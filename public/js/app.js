@@ -25,7 +25,17 @@ function config($stateProvider, $urlRouterProvider) {
 exports.__esModule = true;
 exports["default"] = config;
 
-},{"./controller/HeaderController":2}],2:[function(require,module,exports){
+},{"./controller/HeaderController":3}],2:[function(require,module,exports){
+"use strict";
+exports.name = 'FooterController';
+function controller($scope, VERSION) {
+    $scope.VERSION = VERSION;
+}
+exports.controller = controller;
+exports.__esModule = true;
+exports["default"] = controller;
+
+},{}],3:[function(require,module,exports){
 "use strict";
 exports.name = 'HeaderController';
 function controller($scope) {
@@ -34,7 +44,16 @@ exports.controller = controller;
 exports.__esModule = true;
 exports["default"] = controller;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
+"use strict";
+exports.name = 'ItemsController';
+function controller($scope) {
+}
+exports.controller = controller;
+exports.__esModule = true;
+exports["default"] = controller;
+
+},{}],5:[function(require,module,exports){
 /// <reference path="../typings/tsd.d.ts" />
 "use strict";
 var angular = require('angular');
@@ -42,18 +61,16 @@ require('angular-ui-router');
 var app = angular.module('ngPoznanMeetup21', ['ui.router']);
 var HeaderController = require('./controller/HeaderController');
 app.controller(HeaderController.name, HeaderController.controller);
-app.controller('ItemsController', function ($scope) {
-    console.log('ItemsController');
-});
-app.controller('FooterController', function ($scope, VERSION) {
-    $scope.VERSION = VERSION;
-});
+var ItemsController = require('./controller/ItemsController');
+app.controller(ItemsController.name, ItemsController.controller);
+var FooterController = require('./controller/FooterController');
+app.controller(FooterController.name, FooterController.controller);
 var config_1 = require("./config");
 app.config(config_1["default"]);
 window.app = app;
 app.constant('VERSION', require('../package.json').version);
 
-},{"../package.json":7,"./config":1,"./controller/HeaderController":2,"angular":6,"angular-ui-router":4}],4:[function(require,module,exports){
+},{"../package.json":9,"./config":1,"./controller/FooterController":2,"./controller/HeaderController":3,"./controller/ItemsController":4,"angular":8,"angular-ui-router":6}],6:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -4593,7 +4610,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -35163,14 +35180,14 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":5}],7:[function(require,module,exports){
+},{"./angular":7}],9:[function(require,module,exports){
 module.exports={
   "name": "ng-poznan-21",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Examples for my talk during ng-poznan meetup #21",
   "main": "index.js",
   "scripts": {
@@ -35215,4 +35232,4 @@ module.exports={
   }
 }
 
-},{}]},{},[3]);
+},{}]},{},[5]);

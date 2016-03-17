@@ -8,13 +8,11 @@ var app = angular.module('ngPoznanMeetup21', ['ui.router']);
 import HeaderController = require( './controller/HeaderController');
 app.controller(HeaderController.name, HeaderController.controller);
 
-app.controller('ItemsController', function($scope) {
-    console.log('ItemsController');
-});
+import ItemsController = require( './controller/ItemsController');
+app.controller(ItemsController.name, ItemsController.controller);
 
-app.controller('FooterController', function($scope, VERSION) {
-    $scope.VERSION = VERSION;
-});
+import FooterController = require( './controller/FooterController');
+app.controller(FooterController.name, FooterController.controller);
 
 import {default as config} from "./config";
 app.config(config);
