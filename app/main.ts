@@ -5,13 +5,8 @@ import 'angular-ui-router';
 
 var app = angular.module('ngPoznanMeetup21', ['ui.router']);
 
-app.controller('HeaderController', function($scope) {
-    console.log('HeaderController');
-});
-
-app.controller('BannerController', function($scope) {
-    console.log('BannerController');
-});
+import HeaderController = require( './controller/HeaderController');
+app.controller(HeaderController.name, HeaderController.controller);
 
 app.controller('ItemsController', function($scope) {
     console.log('ItemsController');

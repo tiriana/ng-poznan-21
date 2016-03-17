@@ -1,5 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
+var HeaderController_1 = require('./controller/HeaderController');
 function config($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
@@ -8,11 +9,7 @@ function config($stateProvider, $urlRouterProvider) {
         views: {
             header: {
                 templateUrl: 'view/header.html',
-                controller: 'HeaderController'
-            },
-            banner: {
-                templateUrl: 'view/banner.html',
-                controller: 'BannerController'
+                controller: HeaderController_1.name
             },
             items: {
                 templateUrl: 'view/items.html',
@@ -28,18 +25,23 @@ function config($stateProvider, $urlRouterProvider) {
 exports.__esModule = true;
 exports["default"] = config;
 
-},{}],2:[function(require,module,exports){
+},{"./controller/HeaderController":2}],2:[function(require,module,exports){
+"use strict";
+exports.name = 'HeaderController';
+function controller($scope) {
+}
+exports.controller = controller;
+exports.__esModule = true;
+exports["default"] = controller;
+
+},{}],3:[function(require,module,exports){
 /// <reference path="../typings/tsd.d.ts" />
 "use strict";
 var angular = require('angular');
 require('angular-ui-router');
 var app = angular.module('ngPoznanMeetup21', ['ui.router']);
-app.controller('HeaderController', function ($scope) {
-    console.log('HeaderController');
-});
-app.controller('BannerController', function ($scope) {
-    console.log('BannerController');
-});
+var HeaderController = require('./controller/HeaderController');
+app.controller(HeaderController.name, HeaderController.controller);
 app.controller('ItemsController', function ($scope) {
     console.log('ItemsController');
 });
@@ -51,7 +53,7 @@ app.config(config_1["default"]);
 window.app = app;
 app.constant('VERSION', require('../package.json').version);
 
-},{"../package.json":6,"./config":1,"angular":5,"angular-ui-router":3}],3:[function(require,module,exports){
+},{"../package.json":7,"./config":1,"./controller/HeaderController":2,"angular":6,"angular-ui-router":4}],4:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -4591,7 +4593,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -35161,14 +35163,14 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":4}],6:[function(require,module,exports){
+},{"./angular":5}],7:[function(require,module,exports){
 module.exports={
   "name": "ng-poznan-21",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Examples for my talk during ng-poznan meetup #21",
   "main": "index.js",
   "scripts": {
@@ -35213,4 +35215,4 @@ module.exports={
   }
 }
 
-},{}]},{},[2]);
+},{}]},{},[3]);

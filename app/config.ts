@@ -1,3 +1,5 @@
+import {name as headerControlledName} from './controller/HeaderController'
+
 function config($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
@@ -7,11 +9,7 @@ function config($stateProvider, $urlRouterProvider) {
         views: {
             header: {
                 templateUrl: 'view/header.html',
-                controller: 'HeaderController'
-            },
-            banner: {
-                templateUrl: 'view/banner.html',
-                controller: 'BannerController'
+                controller: headerControlledName
             },
             items: {
                 templateUrl: 'view/items.html',
