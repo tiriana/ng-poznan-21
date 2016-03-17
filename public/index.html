@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<html class="no-js" ng-app='ngPoznanMeetup21'>
 
 <head>
+    <base href="/">
     <meta charset="utf-8">
-    <title>ng-poznan meetup #21</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title ng-bind="pageTitle"></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <img src="img/alive.gif" alt="It's alive scene from Frankenstein">
+<body class="container">
+    <header ui-view="header" class="row" autoscroll="false"></header>
+    <div ui-view="banner" class="banner" autoscroll="false"></div>
+    <div ui-view="items" class="row list" autoscroll="false"></div>
+    <footer ui-view="footer" class="row" autoscroll="false"></footer>
 
     <script src="js/app.js"></script>
 </body>

@@ -31,12 +31,15 @@
     "sillyname": "^0.1.0"
   },
   "devDependencies": {
+    "angular": "^1.5.1",
+    "angular-ui-bootstrap": "^1.2.4",
+    "angular-ui-router": "^0.2.18",
     "bootstrap-less": "^3.3.8",
     "browserify": "^13.0.0",
     "gulp": "^3.9.1",
     "gulp-less": "^3.0.5",
-    "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-tsd": "^0.1.1",
     "tsify": "^0.14.1",
     "vinyl-source-stream": "^1.1.0"
   }

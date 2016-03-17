@@ -5,26 +5,18 @@ var tsify = require('tsify');
 var less = require('gulp-less');
 var path = require('path');
 var rename = require('gulp-rename');
-
-var config = {
-    publicPath: __dirname + '/public',
-    app: {
-        path: __dirname + '/app',
-        main: 'main.ts',
-        result: 'js/app.js'
-    }
-};
+var dirname = __dirname;
 
 gulp.task('scripts', function() {
     var bundler = browserify({
-            basedir: config.app.path
+            basedir: dirname + + '/app'
         })
-        .add(config.app.path + '/' + config.app.main)
+        .add(dirname + '/app/main.ts')
         .plugin(tsify);
 
     return bundler.bundle()
-        .pipe(source(config.app.result))
-        .pipe(gulp.dest(config.publicPath));
+        .pipe(source('js/app.js'))
+        .pipe(gulp.dest(dirname + '/public'));
 });
 
 gulp.task('less', function() {
@@ -39,7 +31,7 @@ gulp.task('less', function() {
         .pipe(gulp.dest('./public/css'));
 });
 
-gulp.task('styles', ['less']);
+gulp.task('styles', ['less']); // alias
 
 gulp.task('watch', function() {
     gulp.watch(['./app/**/*.ts', './app/*.ts'], ['scripts']);
